@@ -1,4 +1,72 @@
-const getTitle  = function() {
+const css = `
+#title-footer {
+    position: absolute;
+    bottom: 0;
+    left: var(--r-block-margin);
+    right: calc(var(--r-block-margin) * 2);
+    height: var(--r-main-font-size);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: var(--r-block-margin);
+    opacity: 1;
+    background-color: var(--main-bg-color);
+    font-style: italic;
+    font-size: calc(var(--r-main-font-size) * var(--slide-scale) * 0.5);
+    transition: opacity 800ms ease-in-out;
+}
+
+#title-footer img {
+    height: var(--r-main-font-size);
+    width: auto;
+    object-fit: contain;
+}
+
+#title-footer .author {
+    margin-left: 10px;
+}
+
+#title-footer .date {
+    margin-right: 10px;
+}
+
+div.progress[style='display: block;']~#title-footer {
+    bottom: calc(3px + 10.5vh);
+}
+
+#title-footer {
+    bottom: 10.5vh;
+}
+#title-footer p {
+    margin: 0;
+}
+
+div.progress[style='display: block;']~footer#title-footer {
+    bottom: calc(3px + 4.5vh);
+}
+
+footer#title-footer {
+    bottom: 3px;
+}
+
+.no-title-footer #title-footer {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
+.no-toc-progress #title-footer {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
+.overview #title-footer {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+`
+
+const getTitle = function () {
     return document.title;
 };
 
@@ -57,16 +125,12 @@ const TitleFooter = {
         this.author = getAuthor();
         this.title = getTitle();
 
-        console.log("this.author", this.author);
 
         this.background = background || 'rgba(0,0,0,0)';
 
         const footerElement = document.createElement('footer');
         footerElement.setAttribute('id', 'title-footer');
         footerElement.setAttribute('style', `background:${this.background}`);
-
-        // const footerParagraph = document.createElement('p');
-        // footerElement.appendChild(footerParagraph);
 
 
         const logoAnchor = document.createElement('a');
@@ -85,5 +149,10 @@ const TitleFooter = {
 
         const revealDiv = document.querySelector('.reveal');
         revealDiv.appendChild(footerElement);
+
+        const styleElement = document.createElement('style');
+        styleElement.innerHTML = css;
+        document.head.appendChild(styleElement);
+
     }
 };
