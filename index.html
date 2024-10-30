@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>presentation_title</title>
+  <link rel="icon" type="image/x-icon"
+    href="https://orstedcdn.azureedge.net/-/media/www/images/corp/graphics/icons/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/simple.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet" href="https://orstedcdn.azureedge.net/Assets_/dist/fonts/OrstedSans-Regular.woff2" as="font"
+    type="font/woff2" crossorigin="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css" />
+  <style>
+    #title-footer.footer {
+      color: saddlebrown !important;
+    }
+
+    #title-footer.footer a {
+      color: saddlebrown !important;
+    }
+
+    div.reveal .slide-number {
+      z-index: 0;
+      background-color: var(--r-background-color);
+      font-size: calc(var(--r-main-font-size) / 2);
+      color: var(--r-main-color);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        <textarea data-template>
+## Markdown Slide A
+A paragraph with some text and a [link](https://orsted.com).
+
+---
+## Markdown Slide B
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+|   Cell   |   Cell   |   Cell   |
+|   Cell   |   Cell   |   Cell   |
+
+---
+## Markdown Slide C
+
+List with numbers:
+1. Item 1
+   - Item 1.1
+   - Item 1.2
+1. Item 2
+   1. Item 2.1
+   1. Item 2.2
+
+        </textarea>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/markdown/markdown.min.js"></script>
+  <script type="module">
+    import RevealOkFooter from 'https://github.com/piotrgredowski/reveal-js-footer/releases/download/0.1.1/ok-footer.js';
+
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+      slideNumber: 'h/v',
+      plugins: [RevealHighlight, RevealNotes, RevealMarkdown, RevealOkFooter],
+    });
+
+    Reveal.configure({
+      pdfMaxPagesPerSlide: 1,
+      pdfSeparateFragments: true,
+      okFooter: {
+        date: "25.10.2024",
+        author: "Jane Doe",
+        logoImageUrl: "https://orstedcdn.azureedge.net/-/media/www/images/corp/graphics/icons/favicon.ico",
+        logoLink: "https://orsted.com",
+        showInPdfPrint: false,
+        title: "Custom title for footer", // If not set - will use the document title
+        cssClasses: ["footer"], // useful for custom styling
+      }
+    });
+
+  </script>
+</body>
+
+</html>
