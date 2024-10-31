@@ -70,26 +70,6 @@ const getTitle = function () {
   return document.title;
 };
 
-const getAuthor = function () {
-  const author = document.querySelector('meta[name="presentation_author"]');
-  return author ? author.getAttribute('content') : '';
-};
-
-const getDate = function () {
-  const date = document.querySelector('meta[name="presentation_date"]');
-  return date ? date.getAttribute('content') : '';
-};
-
-const getLogoUrl = function () {
-  const logo = document.querySelector('meta[name="footer_logo"]');
-  return logo ? logo.getAttribute('content') : '';
-};
-
-const getLogoLink = function () {
-  const logoLink = document.querySelector('meta[name="footer_logo_link"]');
-  return logoLink ? logoLink.getAttribute('content') : '';
-};
-
 const TitleFooter = {
   title: '',
   background: 'rgba(0,0,0,0.1)',
@@ -158,7 +138,6 @@ const TitleFooter = {
       imageElement.setAttribute('alt', 'logo');
       logoImageContainer.appendChild(imageElement);
       footerElement.appendChild(logoImageContainer);
-      console.log(logoImageContainer);
     }
 
     const linkElement = document.createElement('a');
@@ -170,14 +149,16 @@ const TitleFooter = {
     const search = window.location.search;
     const isPdfPrint = (search.match('print-pdf') || []).length > 0;
 
-    if (isPdfPrint && pluginConfig.showInPdfPrint) {
-      Reveal.addEventListener('ready', function (event) {
-        const containers = document.querySelectorAll('.slide-background');
+    if (isPdfPrint) {
+      if (pluginConfig.showInPdfPrint) {
+        Reveal.addEventListener('ready', function (event) {
+          const containers = document.querySelectorAll('.slide-background');
 
-        containers.forEach((container) => {
-          container.appendChild(footerElement.cloneNode(true));
+          containers.forEach((container) => {
+            container.appendChild(footerElement.cloneNode(true));
+          });
         });
-      });
+      }
     } else {
       const container = document.querySelector('.reveal');
       container.appendChild(footerElement);
