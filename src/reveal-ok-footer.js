@@ -1,5 +1,5 @@
 const css = `
-#ok-footer {
+.ok-footer {
     position: absolute;
     bottom: 0;
     left: var(--r-block-margin);
@@ -17,50 +17,50 @@ const css = `
     transition: opacity 800ms ease-in-out;
 }
 
-#ok-footer img {
+.ok-footer img {
     height: var(--r-main-font-size);
     width: auto;
     object-fit: contain;
 }
 
-#ok-footer .author {
+.ok-footer .author {
     margin-left: 10px;
 }
 
-#ok-footer .date {
+.ok-footer .date {
     margin-right: 10px;
 }
 
-div.progress[style='display: block;']~#ok-footer {
+div.progress[style='display: block;']~.ok-footer {
     bottom: calc(3px + 10.5vh);
 }
 
-#ok-footer {
+.ok-footer {
     bottom: 10.5vh;
 }
-#ok-footer p {
+.ok-footer p {
     margin: 0;
 }
 
-div.progress[style='display: block;']~footer#ok-footer {
+div.progress[style='display: block;']~footer.ok-footer {
     bottom: calc(3px + 4.5vh);
 }
 
-footer#ok-footer {
+footer.ok-footer {
     bottom: 3px;
 }
 
-.no-ok-footer #ok-footer {
+.no-ok-footer .ok-footer {
     opacity: 0;
     transition: opacity 800ms ease-in-out;
 }
 
-.no-toc-progress #ok-footer {
+.no-toc-progress .ok-footer {
     opacity: 0;
     transition: opacity 800ms ease-in-out;
 }
 
-.overview #ok-footer {
+.overview .ok-footer {
     opacity: 0;
     transition: opacity 800ms ease-in-out;
 }
@@ -117,7 +117,7 @@ const TitleFooter = {
     const background = 'rgba(0,0,0,0)';
 
     const footerElement = document.createElement('footer');
-    footerElement.setAttribute('id', 'ok-footer');
+    footerElement.setAttribute('class', 'ok-footer');
     footerElement.setAttribute('style', `background:${background}`);
 
     pluginConfig.cssClasses.forEach((className) => {
